@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Block } from '../types/block';
+import { generate } from '../core/codegen';
 import { validate, ValidationError } from '../core/validator';
 
 function addChildToBlock(blocks: Block[], parentId: string, child: Block): Block[] {
@@ -39,6 +40,7 @@ export function useProgram(initial: Block[]) {
   }, []);
 
   const errors: ValidationError[] = useMemo(() => validate(blocks), [blocks]);
+  const code: string = useMemo(() => generate(blocks), [blocks]);
 
-  return { blocks, errors, addRoot, addChild, remove };
+  return { blocks, errors, code, addRoot, addChild, remove };
 }

@@ -18,3 +18,27 @@
   flex: 1;
   padding: 2rem;
 }
+
+.workspace__columns {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.workspace__blocks {
+  flex: 1;
+  min-width: 0;
+}
+
+.workspace__output {
+  flex: 1;
+  min-width: 0;
+  position: sticky;
+  top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .workspace__columns {
+    flex-direction: column;
+  }
+}
