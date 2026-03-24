@@ -43,3 +43,14 @@ export function createSampleProgram(): Block[] {
 
   return [drawSquare, main];
 }
+
+/** Sample with intentional errors for testing validation */
+export function createInvalidSampleProgram(): Block[] {
+  return [
+    createFunction('', []),                   // function with no name
+    createLoop(0, []),                         // loop with 0 count and no children
+    createFunction('test', [
+      createExpression('undeclaredThing'),     // undeclared reference
+    ]),
+  ];
+}
