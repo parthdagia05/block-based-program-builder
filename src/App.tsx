@@ -1,4 +1,8 @@
-import './App.css'
+import { BlockContainer } from './components/BlockContainer';
+import { createSampleProgram } from './core/sampleProgram';
+import './App.css';
+
+const sampleProgram = createSampleProgram();
 
 function App() {
   return (
@@ -7,10 +11,10 @@ function App() {
         <h1>MBv4 Program Builder</h1>
       </header>
       <main className="workspace">
-        {/* Block workspace will go here */}
+        <BlockContainer blocks={sampleProgram} />
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
