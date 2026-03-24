@@ -39,8 +39,20 @@ export function useProgram(initial: Block[]) {
     setBlocks((prev) => removeBlock(prev, blockId));
   }, []);
 
+  const load = useCallback((program: Block[]) => {
+    setBlocks(program);
+  }, []);
+
+  const reset = useCallback(() => {
+    setBlocks([]);
+  }, []);
+
   const errors: ValidationError[] = useMemo(() => validate(blocks), [blocks]);
+  const invalidBlockIds: Set<string> = useMemo(
+    () => new Set(errors.map((e) => e.blockId)),
+    [errors],
+  );
   const code: string = useMemo(() => generate(blocks), [blocks]);
 
-  return { blocks, errors, code, addRoot, addChild, remove };
+  return { blocks, errors, invalidBlockIds, code, addRoot, addChild, remove, load, reset };
 }

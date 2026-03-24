@@ -114,7 +114,21 @@
 .block--expression > .block__header .block__type { background: #50e3c2; color: #000; }
 .block--expression > .block__body { border-left-color: #50e3c244; }
 
+/* Invalid block highlight */
+.block--invalid {
+  border-color: #ff4444 !important;
+  box-shadow: 0 0 0 1px #ff444444;
+}
+
+.block--invalid > .block__header .block__type {
+  background: #ff4444;
+  color: #fff;
+}
+
 @media (prefers-color-scheme: light) {
+  .block--invalid { border-color: #e53935 !important; box-shadow: 0 0 0 1px #e5393544; }
+  .block--invalid > .block__header .block__type { background: #e53935; }
+}
   .block { background: #f5f5f5; }
   .block__body { border-left-color: #ccc; }
   .block__empty { color: #999; }

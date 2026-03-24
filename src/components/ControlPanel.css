@@ -1,0 +1,60 @@
+.control-panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.control-panel__label {
+  font-size: 0.8rem;
+  color: #888;
+  margin-right: 4px;
+}
+
+.control-panel__btn {
+  border-radius: 4px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #555;
+  transition: background 0.15s;
+}
+
+.control-panel__btn--valid {
+  background: #1b3a1b;
+  color: #7ed321;
+  border-color: #2d6a2d;
+}
+.control-panel__btn--valid:hover {
+  background: #254a25;
+}
+
+.control-panel__btn--invalid {
+  background: #3a1b1b;
+  color: #ff6b6b;
+  border-color: #6a2d2d;
+}
+.control-panel__btn--invalid:hover {
+  background: #4a2525;
+}
+
+.control-panel__btn--reset {
+  background: #2a2a2a;
+  color: #ddd;
+  border-color: #555;
+}
+.control-panel__btn--reset:hover {
+  background: #3a3a3a;
+}
+
+@media (prefers-color-scheme: light) {
+  .control-panel__btn--valid { background: #e8f5e9; color: #2e7d32; border-color: #4caf50; }
+  .control-panel__btn--valid:hover { background: #c8e6c9; }
+  .control-panel__btn--invalid { background: #fbe9e7; color: #c62828; border-color: #e53935; }
+  .control-panel__btn--invalid:hover { background: #ffccbc; }
+  .control-panel__btn--reset { background: #eee; color: #333; border-color: #ccc; }
+  .control-panel__btn--reset:hover { background: #ddd; }
+}

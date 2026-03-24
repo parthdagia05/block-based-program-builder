@@ -3,11 +3,12 @@ import { Block } from './Block';
 
 interface BlockContainerProps {
   blocks: BlockModel[];
+  invalidBlockIds?: Set<string>;
   onAddChild?: (parentId: string, child: BlockModel) => void;
   onRemove?: (blockId: string) => void;
 }
 
-export function BlockContainer({ blocks, onAddChild, onRemove }: BlockContainerProps) {
+export function BlockContainer({ blocks, invalidBlockIds, onAddChild, onRemove }: BlockContainerProps) {
   if (blocks.length === 0) {
     return <p className="empty-message">No blocks yet. Start building your program!</p>;
   }
@@ -18,6 +19,7 @@ export function BlockContainer({ blocks, onAddChild, onRemove }: BlockContainerP
         <Block
           key={block.id}
           block={block}
+          invalidBlockIds={invalidBlockIds}
           onAddChild={onAddChild}
           onRemove={onRemove}
         />

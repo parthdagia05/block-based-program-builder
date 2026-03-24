@@ -6,6 +6,7 @@ import './Block.css';
 interface BlockComponentProps {
   block: BlockType;
   depth?: number;
+  invalidBlockIds?: Set<string>;
   onAddChild?: (parentId: string, child: BlockType) => void;
   onRemove?: (blockId: string) => void;
 }
@@ -25,16 +26,18 @@ function getBlockLabel(block: BlockType): string {
   }
 }
 
-export function Block({ block, depth = 0, onAddChild, onRemove }: BlockComponentProps) {
+export function Block({ block, depth = 0, invalidBlockIds, onAddChild, onRemove }: BlockComponentProps) {
   const container = isContainerBlock(block.type);
   const hasChildren = block.children.length > 0;
+  const hasError = invalidBlockIds?.has(block.id) ?? false;
 
   const classNames = [
     'block',
     `block--${block.type}`,
     container ? 'block--container' : 'block--leaf',
     `block--depth-${Math.min(depth, 4)}`,
-  ].join(' ');
+    hasError ? 'block--invalid' : '',
+  ].filter(Boolean).join(' ');
 
   return (
     <div className={classNames}>
@@ -79,6 +82,7 @@ export function Block({ block, depth = 0, onAddChild, onRemove }: BlockComponent
                 key={child.id}
                 block={child}
                 depth={depth + 1}
+                invalidBlockIds={invalidBlockIds}
                 onAddChild={onAddChild}
                 onRemove={onRemove}
               />
