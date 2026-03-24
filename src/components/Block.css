@@ -20,6 +20,7 @@
   font-weight: 600;
   background: #444;
   color: #ccc;
+  flex-shrink: 0;
 }
 
 .block__label {
@@ -27,17 +28,46 @@
   font-family: 'Courier New', monospace;
 }
 
-.block__children {
-  padding: 4px 4px 4px 20px;
-  border-top: 1px solid #333;
+/* Container body with left connector line */
+.block__body {
+  padding: 4px 8px 6px 16px;
+  margin-left: 10px;
+  border-left: 2px solid #444;
 }
+
+.block__empty {
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+  padding: 4px 0;
+  display: block;
+}
+
+/* Leaf blocks are more compact */
+.block--leaf {
+  border-width: 1px;
+  border-style: dashed;
+}
+
+.block--leaf > .block__header {
+  padding: 4px 10px;
+}
+
+/* Depth-based opacity for visual hierarchy */
+.block--depth-0 { background: #1e1e1e; }
+.block--depth-1 { background: #232323; }
+.block--depth-2 { background: #282828; }
+.block--depth-3 { background: #2d2d2d; }
+.block--depth-4 { background: #323232; }
 
 /* Type-specific colors */
 .block--function { border-color: #4a9eff; }
 .block--function > .block__header .block__type { background: #4a9eff; color: #000; }
+.block--function > .block__body { border-left-color: #4a9eff44; }
 
 .block--loop { border-color: #f5a623; }
 .block--loop > .block__header .block__type { background: #f5a623; color: #000; }
+.block--loop > .block__body { border-left-color: #f5a62344; }
 
 .block--variable { border-color: #7ed321; }
 .block--variable > .block__header .block__type { background: #7ed321; color: #000; }
@@ -47,13 +77,25 @@
 
 .block--expression { border-color: #50e3c2; }
 .block--expression > .block__header .block__type { background: #50e3c2; color: #000; }
+.block--expression > .block__body { border-left-color: #50e3c244; }
 
 @media (prefers-color-scheme: light) {
-  .block { background: #f5f5f5; border-color: #999; }
-  .block__children { border-top-color: #ddd; }
+  .block { background: #f5f5f5; }
+  .block__body { border-left-color: #ccc; }
+  .block__empty { color: #999; }
+
+  .block--depth-0 { background: #f8f8f8; }
+  .block--depth-1 { background: #f2f2f2; }
+  .block--depth-2 { background: #ececec; }
+  .block--depth-3 { background: #e6e6e6; }
+  .block--depth-4 { background: #e0e0e0; }
+
   .block--function { border-color: #2979ff; }
+  .block--function > .block__body { border-left-color: #2979ff44; }
   .block--loop { border-color: #e09100; }
+  .block--loop > .block__body { border-left-color: #e0910044; }
   .block--variable { border-color: #4caf50; }
   .block--literal { border-color: #9c27b0; }
   .block--expression { border-color: #009688; }
+  .block--expression > .block__body { border-left-color: #00968844; }
 }

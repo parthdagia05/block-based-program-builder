@@ -1,8 +1,10 @@
 import { Block as BlockType } from '../types/block';
+import { isContainerBlock } from '../core/blockConfig';
 import './Block.css';
 
 interface BlockComponentProps {
   block: BlockType;
+  depth?: number;
 }
 
 function getBlockLabel(block: BlockType): string {
@@ -20,20 +22,32 @@ function getBlockLabel(block: BlockType): string {
   }
 }
 
-export function Block({ block }: BlockComponentProps) {
+export function Block({ block, depth = 0 }: BlockComponentProps) {
+  const container = isContainerBlock(block.type);
   const hasChildren = block.children.length > 0;
 
+  const classNames = [
+    'block',
+    `block--${block.type}`,
+    container ? 'block--container' : 'block--leaf',
+    `block--depth-${Math.min(depth, 4)}`,
+  ].join(' ');
+
   return (
-    <div className={`block block--${block.type}`}>
+    <div className={classNames}>
       <div className="block__header">
         <span className="block__type">{block.type}</span>
         <span className="block__label">{getBlockLabel(block)}</span>
       </div>
-      {hasChildren && (
-        <div className="block__children">
-          {block.children.map((child) => (
-            <Block key={child.id} block={child} />
-          ))}
+      {container && (
+        <div className="block__body">
+          {hasChildren ? (
+            block.children.map((child) => (
+              <Block key={child.id} block={child} depth={depth + 1} />
+            ))
+          ) : (
+            <span className="block__empty">empty</span>
+          )}
         </div>
       )}
     </div>
