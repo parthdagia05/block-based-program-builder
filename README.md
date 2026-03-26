@@ -2,7 +2,7 @@
 
 A block-based visual programming system that models program structure as an AST, renders blocks with nested hierarchy, validates structure in real time, and generates readable pseudo-code.
 
-Built as a demonstration of how visual programming environments work under the hood — from data modeling to rendering to code generation.
+Built as a demonstration of how visual programming environments work under the hood - from data modeling to rendering to code generation.
 
 ## Features
 
