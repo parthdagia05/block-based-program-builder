@@ -6,12 +6,12 @@ Built as a demonstration of how visual programming environments work under the h
 
 ## Features
 
-- **Block AST Model** — Programs are represented as a recursive tree of typed blocks (function, loop, variable, literal, expression)
-- **Visual Block Rendering** — Color-coded blocks with nested indentation, container/leaf distinction, and depth-based styling
-- **Real-time Validation** — Modular rule engine checks structure (missing names, empty loops, undeclared references) with scoped variable tracking
-- **Live Code Generation** — Block tree is converted to formatted pseudo-code, updating instantly on every change
-- **Interactive Editing** — Add/remove blocks at any level, load sample programs, reset workspace
-- **Error Highlighting** — Invalid blocks are visually marked with red borders alongside a detailed error panel
+- **Block AST Model** - Programs are represented as a recursive tree of typed blocks (function, loop, variable, literal, expression)
+- **Visual Block Rendering** - Color-coded blocks with nested indentation, container/leaf distinction, and depth-based styling
+- **Real-time Validation** - Modular rule engine checks structure (missing names, empty loops, undeclared references) with scoped variable tracking
+- **Live Code Generation** - Block tree is converted to formatted pseudo-code, updating instantly on every change
+- **Interactive Editing** - Add/remove blocks at any level, load sample programs, reset workspace
+- **Error Highlighting** - Invalid blocks are visually marked with red borders alongside a detailed error panel
 
 ## Tech Stack
 
@@ -40,9 +40,9 @@ npm run test:watch
 ```
 
 Tests cover the three core modules:
-- **blockFactory** — Block creation and ID generation
-- **validator** — Error detection for invalid structures, passes for valid ones
-- **codegen** — Output format, indentation, and structure mapping
+- **blockFactory** - Block creation and ID generation
+- **validator** - Error detection for invalid structures, passes for valid ones
+- **codegen** - Output format, indentation, and structure mapping
 
 ## Architecture
 
@@ -71,9 +71,4 @@ tests/
   codegen.test.ts
 ```
 
-## Screenshots
 
-<!-- Add screenshots here -->
-<!-- ![Workspace](docs/screenshots/workspace.png) -->
-<!-- ![Validation Errors](docs/screenshots/validation.png) -->
-<!-- ![Code Output](docs/screenshots/codegen.png) -->
